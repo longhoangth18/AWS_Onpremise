@@ -332,9 +332,9 @@ echo "[*] Starting Docker services..."
 docker compose up -d
 
 echo "[*] Waiting for MySQL health..."
-for _ in \$(seq 1 60); do
-  STATUS="\$(docker inspect --format='{{json .State.Health.Status}}' aws-onprem-rds-mysql 2>/dev/null || true)"
-  if [ "\$STATUS" = "\"healthy\"" ]; then
+for _ in $(seq 1 60); do
+  STATUS="$(docker inspect --format='{{json .State.Health.Status}}' aws-onprem-rds-mysql 2>/dev/null || true)"
+  if [ "$STATUS" = "\"healthy\"" ]; then
     break
   fi
   sleep 2
